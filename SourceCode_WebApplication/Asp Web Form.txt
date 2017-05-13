@@ -1,0 +1,136 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InterestRate.aspx.cs" Inherits="WebApplication1.InterestRate" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+       <div>
+    <strong> Lending Club Machine Learning </strong>
+    <br />
+    <br />
+    <br />
+        Annual Income &nbsp$&nbsp;&nbsp;
+    <asp:TextBox ID="annualIncome"  runat="server" Width="123px" Text="0"></asp:TextBox>
+    <br />
+    <br />
+
+        Loan Term &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:DropDownList ID="term" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged" Width="127px">
+        <asp:ListItem>36 months</asp:ListItem>
+        <asp:ListItem>60 months</asp:ListItem>
+    </asp:DropDownList><br />
+    <br />
+           Grade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    <asp:DropDownList ID="grade" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged" Width="52px">
+        <asp:ListItem>A</asp:ListItem>
+        <asp:ListItem>B</asp:ListItem>
+        <asp:ListItem>C</asp:ListItem>
+        <asp:ListItem>D</asp:ListItem>
+        <asp:ListItem>E</asp:ListItem>
+        <asp:ListItem>F</asp:ListItem>
+        <asp:ListItem>G</asp:ListItem>
+    </asp:DropDownList><br />
+    <br />
+           Purpose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="purpose" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged">
+        <asp:ListItem>debt_consolidation</asp:ListItem>
+        <asp:ListItem>credit_card</asp:ListItem>
+        <asp:ListItem>home_improvement</asp:ListItem>
+        <asp:ListItem>small_business</asp:ListItem>
+        <asp:ListItem>major_purchase</asp:ListItem>
+        <asp:ListItem>medical</asp:ListItem>
+        <asp:ListItem>car</asp:ListItem>
+        <asp:ListItem>moving</asp:ListItem>
+        <asp:ListItem>house</asp:ListItem>
+        <asp:ListItem>vacation</asp:ListItem>
+        <asp:ListItem>renewable_energy</asp:ListItem>
+        <asp:ListItem>wedding</asp:ListItem>
+        <asp:ListItem>educational</asp:ListItem>
+    </asp:DropDownList><br />
+    <br />
+    <br />
+        Inquiries in Last 6 Months(Y/N) &nbsp
+    <asp:TextBox ID="inq_last_6_months"  runat="server" Width="123px" Text="0"></asp:TextBox>
+    <br />
+    <br />
+        Number Of Public Records &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="pub_rec"  runat="server" Width="123px" Text="0"></asp:TextBox>
+    <br />
+    <br />
+        Loan Status &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    <asp:DropDownList ID="loanStatus" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged">
+        <asp:ListItem>Current</asp:ListItem>
+        <asp:ListItem>Fully Paid</asp:ListItem>
+        <asp:ListItem>Charged Off</asp:ListItem>
+        <asp:ListItem>Default</asp:ListItem>
+        <asp:ListItem>Does not meet the credit policy. Status:Charged Off</asp:ListItem>
+        <asp:ListItem>In Grace Period</asp:ListItem>
+        <asp:ListItem>Default Receiver</asp:ListItem>
+        <asp:ListItem>Late (16-30 days)</asp:ListItem>
+        <asp:ListItem>Late (31-120 days)</asp:ListItem>
+    </asp:DropDownList><br />
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp;Result: </strong>&nbsp;<asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+        &nbsp;%<br />
+        Home Ownership &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:DropDownList ID="homeOwnership" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged">
+        <asp:ListItem>Rent</asp:ListItem>
+        <asp:ListItem>Mortgage</asp:ListItem>
+        <asp:ListItem>Own</asp:ListItem>
+        <asp:ListItem>Other</asp:ListItem>
+    </asp:DropDownList><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&nbsp; </strong>
+       
+        <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+           &nbsp; <br />
+    <br />
+        Verification Status &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+     <asp:DropDownList ID="verificationStatus" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged">
+        <asp:ListItem>Verified</asp:ListItem>
+        <asp:ListItem>Not Verified</asp:ListItem>
+    </asp:DropDownList>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+
+     <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+           &nbsp;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br />
+    <br />
+      Application Type &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <asp:DropDownList ID="applicationType" runat="server" OnSelectedIndexChanged="purpose_SelectedIndexChanged">
+        <asp:ListItem>DIRECT_PAY</asp:ListItem>
+        <asp:ListItem>INDIVIDUAL</asp:ListItem>
+        <asp:ListItem>JOINT</asp:ListItem>
+    </asp:DropDownList><br />
+    <br />
+    <br />
+    Number Of Yeards of Credit Line History &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="crhistory"  runat="server" Width="123px" Text="0"></asp:TextBox>
+    <br />
+    <br />
+
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" Height="29px" Width="94px" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Result:
+       
+        <br />
+        &nbsp;
+        <br />
+       
+        <br />
+        &nbsp;
+        <br />
+
+        <br />
+        &nbsp;
+        <br />
+    
+        <br />
+        <br />
+    </div>
+    </div>
+    </form>
+</body>
+</html>

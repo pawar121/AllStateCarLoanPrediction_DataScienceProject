@@ -1,0 +1,47 @@
+2017-04-28 11:45:37,655 - root - INFO - Application started....
+2017-04-28 11:45:37,657 - root - INFO - Cleaning and filling missing data started..
+2017-04-28 11:45:37,658 - root - INFO - Working on file: train.csv....
+2017-04-28 11:45:48,254 - root - INFO - Filling missing data..
+2017-04-28 11:45:48,304 - root - INFO - Deriving columns..
+2017-04-28 11:45:50,890 - root - INFO - Converting the data type..
+2017-04-28 11:45:51,874 - root - INFO - Predicting & filling missing risk_factor..
+2017-04-28 11:45:58,196 - root - INFO - Writing purchases data to CSV..
+2017-04-28 11:46:00,653 - root - INFO - Total number of records in the purchase_data : 97009
+2017-04-28 11:46:00,653 - root - INFO - Writing quotes data to CSV..
+2017-04-28 11:46:11,012 - root - INFO - Total number of records in the quotes_data : 568240
+2017-04-28 11:46:11,012 - root - INFO - Writing last quote data to CSV..
+2017-04-28 11:46:13,531 - root - INFO - Total number of records in the last_quote_data : 97009
+2017-04-28 11:46:13,531 - root - INFO - Application finished....
+2017-04-28 11:46:13,585 - luigi-interface - INFO - [pid 3928] Worker Worker(salt=491572611, workers=1, host=DESKTOP-EO4BBN1, username=sumit, pid=3928) done      Clean_data()
+2017-04-28 11:46:13,589 - luigi-interface - INFO - Informed scheduler that task   Clean_data__99914b932b   has status   DONE
+2017-04-28 11:46:13,590 - luigi.scheduler - INFO - Starting pruning of task graph
+2017-04-28 11:46:13,591 - luigi.scheduler - INFO - Done pruning task graph
+2017-04-28 11:46:13,592 - luigi-interface - INFO - [pid 3928] Worker Worker(salt=491572611, workers=1, host=DESKTOP-EO4BBN1, username=sumit, pid=3928) running   start_task()
+2017-04-28 11:46:13,594 - root - INFO - Pipeline started....
+2017-04-28 12:27:31,823 - luigi-interface - ERROR - [pid 3928] Worker Worker(salt=491572611, workers=1, host=DESKTOP-EO4BBN1, username=sumit, pid=3928) failed    start_task()
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\luigi\worker.py", line 191, in run
+    new_deps = self._run_get_new_deps()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\luigi\worker.py", line 129, in _run_get_new_deps
+    task_gen = self.task.run()
+  File "start_pipeline.py", line 86, in run
+    aws_access_key = input("Enter your aws access key: ")
+EOFError
+2017-04-28 12:27:31,834 - luigi-interface - INFO - Informed scheduler that task   start_task__99914b932b   has status   FAILED
+2017-04-28 12:27:31,841 - luigi.scheduler - INFO - Starting pruning of task graph
+2017-04-28 12:27:31,842 - luigi.scheduler - INFO - Done pruning task graph
+2017-04-28 12:27:31,849 - luigi-interface - INFO - Worker Worker(salt=491572611, workers=1, host=DESKTOP-EO4BBN1, username=sumit, pid=3928) was stopped. Shutting down Keep-Alive thread
+2017-04-28 12:27:31,854 - luigi-interface - INFO - 
+===== Luigi Execution Summary =====
+
+Scheduled 3 tasks of which:
+* 2 ran successfully:
+    - 1 Clean_data()
+    - 1 Download_data()
+* 1 failed:
+    - 1 start_task()
+
+This progress looks :( because there were failed tasks
+
+===== Luigi Execution Summary =====
+
